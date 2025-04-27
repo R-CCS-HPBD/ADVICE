@@ -1,0 +1,3 @@
+clang++ -S -g -fdebug-info-for-profiling -fno-discard-value-names -emit-llvm -DSMALL -o itsc.ll intersection.cpp
+clang++ -lm itsc.ll -lstdc++ -o itsc.exe
+./itsc.exe

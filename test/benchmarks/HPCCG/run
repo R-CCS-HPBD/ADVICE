@@ -1,0 +1,17 @@
+
+
+
+cd ../../../lib
+
+./scope.exe 117 145 _Z5HPCCGP24HPC_Sparse_Matrix_STRUCTPKdPdidRiRdS3_ 
+
+./run
+
+cd -
+#cd build
+make clean
+make all
+
+ ./OUTPUT 3 3 3
+ 
+

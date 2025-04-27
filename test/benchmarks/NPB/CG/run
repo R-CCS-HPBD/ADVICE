@@ -1,0 +1,17 @@
+
+
+
+cd ../../../../lib
+
+./scope.exe 296 330 main
+
+./run
+
+cd -
+#cd build
+make clean
+make all
+
+./OUTPUT
+
+

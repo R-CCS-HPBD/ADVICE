@@ -1,0 +1,16 @@
+
+
+
+cd ../../../../lib
+
+./scope.exe 115 267 ssor
+
+./run
+
+cd -
+#cd build
+make clean
+make all
+
+
+

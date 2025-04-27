@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# 初始化计数器
+counter=0
+
+if [ ! -f unique_variables.txt ]; then
+    echo "unique_variables.txt not exist"
+    exit 1
+fi
+
+while IFS= read -r func_name; do
+    if grep -r -q "$func_name" *.c; then
+        ((counter++))
+    fi
+done < unique_variables.txt
+
+
+echo " $counter"

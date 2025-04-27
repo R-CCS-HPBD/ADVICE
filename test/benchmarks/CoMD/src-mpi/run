@@ -1,0 +1,19 @@
+
+
+
+cd ../../../../lib
+
+./scope.exe 113 126 main
+
+./run
+
+cd -
+#cd build
+make clean
+make all
+
+#./OUTPUT
+
+#rm *.yaml
+
+

@@ -1,0 +1,16 @@
+
+
+
+cd ../../../lib
+
+time ./scope.exe 186 217 jacobi
+
+time ./run
+
+cd -
+#cd build
+make clean
+make all
+
+
+

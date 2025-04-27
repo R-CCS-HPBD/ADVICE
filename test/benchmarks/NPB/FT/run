@@ -1,0 +1,17 @@
+
+
+
+cd ../../../../lib
+
+./scope.exe 109 119 appft
+
+./run
+
+cd -
+#cd build
+make clean
+make all
+
+
+#./OUTPUT
+

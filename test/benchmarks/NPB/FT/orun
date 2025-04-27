@@ -1,0 +1,18 @@
+
+
+
+cd ../../../../lib
+clang++ -S  -O0 -fdebug-info-for-profiling -fno-discard-value-names -emit-llvm -DSMALL -o addother.ll addother.cpp
+#./scope.exe 24 27 evolve
+#cd ../../../../lib
+
+./scope.exe 109 119 appft
+./makerun
+
+cd -
+#cd build
+make clean
+make all
+
+
+

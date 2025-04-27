@@ -1,0 +1,4 @@
+cd ../../../../lib/Data
+./itsc.exe
+cd -
+cp ../../../../lib/Data/unique_variables.txt ./

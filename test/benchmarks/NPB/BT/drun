@@ -1,0 +1,19 @@
+
+
+
+cd ../../../../lib
+
+#./scope.exe 180 186 main
+./scope.exe 60 150 exact_rhs
+
+
+
+./run
+
+cd -
+#cd build
+make clean
+make all
+
+
+#./OUTPUT

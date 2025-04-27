@@ -1,0 +1,8 @@
+
+
+
+
+
+
+
+clang `llvm-config --cxxflags` -Wl,-znodelete -fno-rtti -fPIC -shared findcv.cpp -o findcv.so `llvm-config --ldflags`

@@ -1,0 +1,30 @@
+
+
+
+cd ../../../../lib
+
+./scope.exe 180 186 main
+#./scope.exe 60 150 exact_rhs
+#./scope.exe 155 245  exact_rhs
+#./scope.exe 250 341 exact_rhs
+#./scope.exe 70 393 x_solve
+#./scope.exe 69 390 y_solve
+#./scope.exe 69 404 z_solve
+#./scope.exe 45 53 add
+#./scope.exe 47 64 compute_rhs
+#./scope.exe 83 183 compute_rhs
+#./scope.exe 190 289 compute_rhs
+#./scope.exe 296 346 compute_rhs
+#./scope.exe 352 360 compute_rhs
+
+./run
+
+cd -
+#cd build
+make clean
+make all
+
+
+./OUTPUT
+
+cp ../../../../lib/Data/unique_variables.txt ./

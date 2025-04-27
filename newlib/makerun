@@ -1,0 +1,23 @@
+
+
+
+
+
+#clang++ -S -g -fdebug-info-for-profiling -fno-discard-value-names -emit-llvm -DSMALL -o scope.ll mainloopScope.cpp
+#clang++ -lm scope.ll -lstdc++ -o scope.exe
+#./scope.exe 26 35 main 
+
+
+#clang -S  -O0 -fdebug-info-for-profiling -fno-discard-value-names -emit-llvm -DSMALL -o addflag.ll addflag.c
+#clang++ -S  -O0 -fdebug-info-for-profiling -fno-discard-value-names -emit-llvm -DSMALL -o addother.ll addother.cpp
+
+clang `llvm-config --cxxflags` -Wl,-znodelete -fno-rtti -fPIC -shared LoopRange.cpp -o LoopRange.so `llvm-config --ldflags`
+
+clang `llvm-config --cxxflags` -Wl,-znodelete -fno-rtti -fPIC -shared LinkChecker.cpp -o LinkChecker.so `llvm-config --ldflags`
+
+clang `llvm-config --cxxflags` -Wl,-znodelete -fno-rtti -fPIC -shared Checker.cpp -o Checker.so `llvm-config --ldflags`
+
+clang `llvm-config --cxxflags` -Wl,-znodelete -fno-rtti -fPIC -shared InsertCheckpointCode.cpp -o InsertCheckpointCode.so `llvm-config --ldflags`
+
+
+#opt -enable-new-pm=0 -load /workspace/LLVM-Checker/lib/InsertCheckpointCode.so -insertcheckpointcode<cher_all.ll> cher_all_last.ll -S

@@ -1,5 +1,5 @@
 export WORKLOAD=main
-CHECKER_HOME=/workspace/LLVM-Checker
+CHECKER_HOME ?= /workspace/LLVM-Checker
 
 SRCS = $(wildcard *.c)
 HDRS = $(wildcard *.h)
@@ -9,7 +9,7 @@ CG=clang++
 
 C_INC= -I ../common
 
-LLVM_DIR := /usr/lib/llvm-13
+LLVM_DIR := $(shell llvm-config --prefix)
 LLVM_LIBS := $(LLVM_DIR)/lib
 LLVM_INCLUDE := $(LLVM_DIR)/include
 
@@ -50,7 +50,7 @@ ${EXEC}:cher_last.ll
 	  $(CG) -lm $< -lstdc++ -o $@
 
 output:cher_all.ll
-	opt -enable-new-pm=0 -load /workspace/LLVM-Checker/lib/findcv.so -findcv<cher_all.ll> findtest.ll -S
+	opt -enable-new-pm=0 -load $(CHECKER_HOME)/lib/findcv.so -findcv<cher_all.ll> findtest.ll -S
 	$(CG) -lm findtest.ll -lstdc++ -o $@
 #create file
 build:

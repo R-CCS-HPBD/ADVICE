@@ -9,6 +9,7 @@
 #include<unordered_map>
 #include <fstream>
 
+#include "CheckerPaths.h"
 
 using namespace std;
 
@@ -131,8 +132,7 @@ int cher_num = 0;
 
 
 ///files data
-//std::string LOADFILEADDR = "/home/zwp82/workspace/LLVM-Checker/lib/Data/";
-std::string LOADFILEADDR = "/workspace/LLVM-Checker/lib/Data/";
+std::string LOADFILEADDR = cher_dataDir();
 
 string cher_dataFiles[10] = {"dataMap.txt","varsMap.txt","arrVarsMap.txt","mainloopData.txt"
         ,"outfile.txt" ,"cp.txt","IO.txt","CpVar.txt"};

@@ -46,7 +46,10 @@ using namespace llvm;
 extern "C" {
 void* malloc(size_t);
 }
-#define FILELIB "/workspace/LLVM-Checker/lib/Data/"
+
+#include "CheckerPaths.h"
+
+#define FILELIB cher_dataDir()
 namespace {
     struct InsertCheckpointCode : public FunctionPass {
         static char ID;

@@ -1,0 +1,14 @@
+name: advice
+channels:
+  - conda-forge
+dependencies:
+  # Pass 依赖 legacy PassManager（opt -enable-new-pm=0），必须是 13.x
+  - llvmdev=13.0.1
+  - llvm-tools=13.0.1
+  - clang=13.0.1
+  - clangxx=13.0.1
+  - lld=13.0.1
+  - make
+  - zlib
+  # 仅 AMG / NPB / miniAMR 需要
+  - openmpi

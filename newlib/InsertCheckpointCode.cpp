@@ -41,6 +41,7 @@
     #include <string>
     #include <set>
 
+    #include "CheckerPaths.h"
 
     using namespace llvm;
 
@@ -132,7 +133,7 @@
             std::set<std::string>cpFnames;
             std::map<std::string ,cpNode>cpVarsMap;///存储所有的cp变量
 
-            std::string FILELIB= "/workspace/LLVM-Checker/lib/Data/";
+            std::string FILELIB = cher_dataDir();
     //        std::vector<cpNode>cpVarsMap;
 
             InsertCheckpointCode() : FunctionPass(ID) {}

@@ -38,8 +38,10 @@
 #include <string>
 #include <utility>
 
-#define READFILELIB "/workspace/LLVM-Checker/lib/Data/"
-#define WRITERFILELIB "/workspace/LLVM-Checker/lib/Data/"
+#include "CheckerPaths.h"
+
+#define READFILELIB cher_dataDir()
+#define WRITERFILELIB cher_dataDir()
 
 char dataFiles[10][30]={"dataMap.txt","funcNameData.txt","varNameData.txt",
                         "varsMap.txt","loopRangeData.txt"};

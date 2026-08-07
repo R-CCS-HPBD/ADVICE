@@ -1,0 +1,18 @@
+
+
+
+cd ../../../../lib
+
+#./scope.exe 1413 2269  BuildIJLaplacian27pt 
+#./scope.exe 447 828 hypre_GMRESSolve
+./scope.exe 474 570 main
+./run
+
+cd -
+#cd build
+make clean
+make all
+
+#./OUTPUT --nx 2 --ny 2 --nz 2 --max_blocks 2
+#./OUTPUT -n 3 3 3 -p 1 1 1 -problem 2
+#./OUTPUT -problem 2

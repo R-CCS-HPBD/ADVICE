@@ -1,5 +1,5 @@
 export WORKLOAD=main
-CHECKER_HOME=/workspace/LLVM-Checker
+CHECKER_HOME ?= /workspace/LLVM-Checker
 
 SRCS = $(wildcard *.cpp)
 HDRS = $(wildcard *.hpp)
@@ -9,7 +9,7 @@ CG=clang++
 
 C_INC= 
 
-LLVM_DIR := /usr/lib/llvm-13
+LLVM_DIR := $(shell llvm-config --prefix)
 LLVM_LIBS := $(LLVM_DIR)/lib
 LLVM_INCLUDE := $(LLVM_DIR)/include
 

@@ -1,5 +1,5 @@
 export WORKLOAD=main
-CHECKER_HOME=/workspace/LLVM-Checker
+CHECKER_HOME ?= /workspace/LLVM-Checker
 
 SRCS = $(wildcard *.c)
 HDRS = $(wildcard *.h)
@@ -7,9 +7,13 @@ EXEC = OUTPUT
 CC=clang
 CG=clang++
 MC=mpicc
-C_INC= -I /usr/lib/x86_64-linux-gnu/openmpi/include/
+# 从 mpicc 推导 MPI 标志，取不到时回退到 Debian/Ubuntu 的默认位置
+MPI_CFLAGS := $(shell $(MC) -showme:compile 2>/dev/null)
+MPI_LDFLAGS := $(shell $(MC) -showme:link 2>/dev/null)
+C_INC ?= $(or $(MPI_CFLAGS),-I/usr/lib/x86_64-linux-gnu/openmpi/include/)
+MPI_LINK ?= $(or $(MPI_LDFLAGS),-lmpi)
 
-LLVM_DIR := /usr/lib/llvm-13
+LLVM_DIR := $(shell llvm-config --prefix)
 LLVM_LIBS := $(LLVM_DIR)/lib
 LLVM_INCLUDE := $(LLVM_DIR)/include
 
@@ -44,10 +48,10 @@ cher_full.ll:cher_change_test.ll $(ADDOTHER)
 cher_last.ll:cher_full.ll
 	opt -enable-new-pm=0 -load $(CHECKER) -checker<cher_full.ll> $@ -S
 output:cher_all.ll
-	opt -enable-new-pm=0 -load /workspace/LLVM-Checker/lib/findcv.so -findcv<cher_all.ll> findtest.ll -S
+	opt -enable-new-pm=0 -load $(CHECKER_HOME)/lib/findcv.so -findcv<cher_all.ll> findtest.ll -S
 	$(CG) -lm findtest.ll -lstdc++ -o $@
 ${EXEC}:cher_last.ll
-	$(CG) -lm -lz -lmpi -O0 -fno-inline -lstdc++ -o $(EXEC) cher_last.ll
+	$(CG) -lm -lz $(MPI_LINK) -O0 -fno-inline -lstdc++ -o $(EXEC) cher_last.ll
 #create file
 build:
 	mkdir -p cher_sourceIRFiles

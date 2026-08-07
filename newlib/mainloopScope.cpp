@@ -1,6 +1,8 @@
 #include <fstream>
 #include <iostream>
 
+#include "CheckerPaths.h"
+
 int main(int argc, char** argv) {
 //    printf("Enter the range of the main loop in turn (the start line number and the end line number in the c file where the main loop is located) are separated by `,` in the middle, such as: 184,218\n");
 //    scanf("%d,%d", &mainloopbegin, &mainloopend);
@@ -12,7 +14,7 @@ int main(int argc, char** argv) {
         funcName = argv[3];
     }
 //    std::cin >> funcName;
-    std::ofstream file("/workspace/LLVM-Checker/lib/Data/mainloopData.txt");
+    std::ofstream file(cher_dataDir() + "mainloopData.txt");
     if (file.is_open()) {
         file << mainloopbegin << "," << mainloopend << "\n";
         file << funcName << "\n";

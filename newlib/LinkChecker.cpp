@@ -41,10 +41,10 @@
     #include<unordered_map>
 
 
-//    #define READFILELIB "/home/zwp82/workspace/LLVM-Checker/lib/Data/"
-//    #define WRITERFILELIB "/home/zwp82/workspace/LLVM-Checker/lib/Data/"
-    #define READFILELIB "/workspace/LLVM-Checker/lib/Data/"
-    #define WRITERFILELIB "/workspace/LLVM-Checker/lib/Data/"
+    #include "CheckerPaths.h"
+
+    #define READFILELIB cher_dataDir()
+    #define WRITERFILELIB cher_dataDir()
 
     char dataFiles[10][30]={"dataMap.txt","varsMap.txt","arrVarsMap.txt",
                             "varNameData.txt","tmpLinkVarList.txt","funcNameData.txt",

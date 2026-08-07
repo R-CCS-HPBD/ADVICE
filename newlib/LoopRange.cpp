@@ -29,7 +29,9 @@
 using namespace llvm;
 
 
-#define FILELIB "/workspace/LLVM-Checker/lib/Data/loopRangeData.txt"
+#include "CheckerPaths.h"
+
+#define FILELIB (cher_dataDir() + "loopRangeData.txt")
 
 
 namespace {

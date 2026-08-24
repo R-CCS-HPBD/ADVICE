@@ -1,7 +1,5 @@
 # ADVICE
 
-*[English](#advice)
-
 ADVICE is a set of out-of-tree LLVM passes that combine static analysis with IR instrumentation to
 identify which variables of an HPC program must be checkpointed.
 
